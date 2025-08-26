@@ -21,6 +21,7 @@ namespace EngineRoom.Examples
         [Header("Views")] 
         [SerializeField] private PlayerView _playerView;
         [SerializeField] private BulletView _bulletViewPrefab;
+        [SerializeField] private TargetView[] _targetSpawnPointViews;
         
         [Header("Various")]
         [SerializeField] private Transform _bulletSpawnPoint;
@@ -33,6 +34,7 @@ namespace EngineRoom.Examples
             // Various
             builder.Register<IInputHandler, KeyboardInputHandler>(Lifetime.Singleton);
             builder.RegisterInstance(_bulletSpawnPoint).Keyed(TransformKey.BulletSpawn);
+            builder.Register<ITargetController, TargetController>(Lifetime.Transient);
             
             // Settings
             builder.RegisterInstance(_controlsSettings).As<IControlsSettings>();
@@ -41,10 +43,18 @@ namespace EngineRoom.Examples
             // Views
             builder.RegisterComponent(_playerView).As<IPlayerView>();
             builder.RegisterInstance(_bulletViewPrefab);
+
+            foreach (var targetSpawnPointView in _targetSpawnPointViews)
+            {
+                builder.RegisterInstance<ITargetView>(targetSpawnPointView)
+                    .Keyed(targetSpawnPointView.name);
+            }
             
             builder.UseEntryPoints(config =>
             {
                 config.Add<PlayerController>();
+                config.Add<TargetsService>();
+                config.Add<TimeService>().As<ITimeService>();
             });
         }
     }

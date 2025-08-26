@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3647505505969320051}
   - component: {fileID: 4264726458931033245}
+  - component: {fileID: 1499198331057335666}
   m_Layer: 0
   m_Name: Target Spawn Point
   m_TagString: Untagged
@@ -69,6 +70,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1499198331057335666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577161360915224240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be89155e8cd4952908232a822a3a752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EngineRoom.Examples::EngineRoom.Examples.Views.TargetView
+  _target: {fileID: 3946289690530062739}
+  _collider: {fileID: 4264726458931033245}
 --- !u!1 &3946289690530062739
 GameObject:
   m_ObjectHideFlags: 0
