@@ -480,6 +480,11 @@ Transform:
   - {fileID: 2157695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &254165103 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8250513871656947137, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+  m_PrefabInstance: {fileID: 2157694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,6 +989,8 @@ MonoBehaviour:
   _controlsSettings: {fileID: 11400000, guid: 0c57dead538b944d1b2dfdcd8beabab6, type: 2}
   _gameSettings: {fileID: 11400000, guid: c1d1b598533254797ba2ec8dc60db7c6, type: 2}
   _playerView: {fileID: 2157698}
+  _bulletViewPrefab: {fileID: 8519726143776859999, guid: bd0a7f4ff10684917a3cccba2b4d3178, type: 3}
+  _bulletSpawnPoint: {fileID: 254165103}
 --- !u!4 &1518933427
 Transform:
   m_ObjectHideFlags: 0

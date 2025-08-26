@@ -9,15 +9,18 @@ namespace EngineRoom.Examples.Controllers
         private readonly IInputHandler _inputHandler;
         private readonly IGameSettings _gameSettings;
         private readonly IPlayerView _playerView;
+        private readonly IBulletsService _bulletsService;
 
         public PlayerController(
             IInputHandler inputHandler,
             IGameSettings gameSettings, 
-            IPlayerView playerView)
+            IPlayerView playerView,
+            IBulletsService bulletsService)
         {
             _inputHandler = inputHandler;
             _gameSettings = gameSettings;
             _playerView = playerView;
+            _bulletsService = bulletsService;
         }
 
         public void Tick()
@@ -29,7 +32,8 @@ namespace EngineRoom.Examples.Controllers
 
             if (_inputHandler.IsFireButtonPressed)
             {
-                Debug.Log("Fire Button Pressed");
+                var aimDirection = Quaternion.Euler(0f, 0f, _playerView.CannonRotation) * Vector2.right;
+                _bulletsService.SpawnBullet(aimDirection);
             }
         }
     }
