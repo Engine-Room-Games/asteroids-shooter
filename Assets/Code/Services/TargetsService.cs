@@ -15,16 +15,19 @@ namespace EngineRoom.Examples.Services
         private readonly ITargetView[] _spawnPoints;
         private readonly ITargetController[] _spawnPointControllers;
         private readonly IObjectResolver _resolver;
+        private readonly IScoreService _scoreService;
 
         public TargetsService(
             ITimeService timeService, 
             IEnumerable<ITargetView> spawnPoints,
-            IObjectResolver resolver)
+            IObjectResolver resolver, 
+            IScoreService scoreService)
         {
             _timeService = timeService;
             _spawnPoints = spawnPoints!.ToArray();
             _spawnPointControllers = new ITargetController[_spawnPoints.Length];
             _resolver = resolver;
+            _scoreService = scoreService;
         }
         
         public void Start()
@@ -38,23 +41,13 @@ namespace EngineRoom.Examples.Services
                 var controller = _resolver.Resolve<ITargetController>();
                 controller.SetView(targetSpawnPoint);
                 
-                controller.TargetGotHit += OnTargetGotHit;
-                controller.TargetDespawned += OnTargetDespawned;
+                controller.TargetGotHit += _scoreService.AddScore;
+                controller.TargetDespawned += _scoreService.SubtractScore;
                 
                 _spawnPointControllers[i] = controller;
             }
         }
-
-        private void OnTargetDespawned()
-        {
-            Debug.Log("Target Despawned");
-        }
-
-        private void OnTargetGotHit()
-        {
-            Debug.Log("Target GotHit");
-        }
-
+        
         private void OnSecondPassed()
         {
             var availableControllers = _spawnPointControllers.Where(c => c.CanSpawnTarget).ToArray();
@@ -72,8 +65,8 @@ namespace EngineRoom.Examples.Services
 
             foreach (var controller in _spawnPointControllers)
             {
-                controller.TargetGotHit -= OnTargetGotHit;
-                controller.TargetDespawned -= OnTargetDespawned;
+                controller.TargetGotHit -= _scoreService.AddScore;
+                controller.TargetDespawned -= _scoreService.SubtractScore;
             }
         }
     }

@@ -30,6 +30,7 @@ namespace EngineRoom.Examples
         {
             // Services
             builder.Register<IBulletsService, BulletsService>(Lifetime.Singleton);
+            builder.Register<IScoreService, ScoreService>(Lifetime.Singleton);
             
             // Various
             builder.Register<IInputHandler, KeyboardInputHandler>(Lifetime.Singleton);
