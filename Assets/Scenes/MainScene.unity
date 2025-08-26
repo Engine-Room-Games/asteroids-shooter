@@ -119,6 +119,94 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &2157694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 167662558}
+    m_Modifications:
+    - target: {fileID: 1200614094124296071, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1200614094124296071, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2157698}
+  m_SourcePrefab: {fileID: 100100000, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+--- !u!4 &2157695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5266540618494355301, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+  m_PrefabInstance: {fileID: 2157694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2157696 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2820878204447682758, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+  m_PrefabInstance: {fileID: 2157694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2157697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1200614094124296071, guid: 4f81ec9168e4c4c2a88ea81bf416caaa, type: 3}
+  m_PrefabInstance: {fileID: 2157694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2157698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e75fc845f27b4a739563cc85c35d2036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: EngineRoom.Examples::EngineRoom.Examples.Views.PlayerView
+  _cannon: {fileID: 2157696}
 --- !u!1 &83726209
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +477,7 @@ Transform:
   - {fileID: 891173005}
   - {fileID: 1547451612}
   - {fileID: 1988061522}
+  - {fileID: 2157695}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -893,6 +982,8 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   _controlsSettings: {fileID: 11400000, guid: 0c57dead538b944d1b2dfdcd8beabab6, type: 2}
+  _gameSettings: {fileID: 11400000, guid: c1d1b598533254797ba2ec8dc60db7c6, type: 2}
+  _playerView: {fileID: 2157698}
 --- !u!4 &1518933427
 Transform:
   m_ObjectHideFlags: 0
