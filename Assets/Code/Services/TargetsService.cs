@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EngineRoom.Examples.Interfaces;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using Random = UnityEngine.Random;
@@ -37,8 +38,21 @@ namespace EngineRoom.Examples.Services
                 var controller = _resolver.Resolve<ITargetController>();
                 controller.SetView(targetSpawnPoint);
                 
+                controller.TargetGotHit += OnTargetGotHit;
+                controller.TargetDespawned += OnTargetDespawned;
+                
                 _spawnPointControllers[i] = controller;
             }
+        }
+
+        private void OnTargetDespawned()
+        {
+            Debug.Log("Target Despawned");
+        }
+
+        private void OnTargetGotHit()
+        {
+            Debug.Log("Target GotHit");
         }
 
         private void OnSecondPassed()
@@ -55,6 +69,12 @@ namespace EngineRoom.Examples.Services
         public void Dispose()
         {
             _timeService.SecondPassed -= OnSecondPassed;
+
+            foreach (var controller in _spawnPointControllers)
+            {
+                controller.TargetGotHit -= OnTargetGotHit;
+                controller.TargetDespawned -= OnTargetDespawned;
+            }
         }
     }
 }
